@@ -47,7 +47,10 @@ export class Card {
     const text = `“${quote.text}” — ${quote.author}`;
 
     if (navigator.share) {
-      navigator.share({ title: quote.author, text });
+      navigator
+        .share({ title: quote.author, text, url: environment.X_API })
+        .then(() => console.log('Shared successfully'))
+        .catch((error) => console.error('Sharing failed:', error));
     } else {
       window.open(`${environment.X_API}${encodeURIComponent(text)}`, '_blank');
     }
