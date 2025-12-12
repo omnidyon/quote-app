@@ -2,6 +2,7 @@ import { Component, DestroyRef, inject, model } from '@angular/core';
 import { Quote } from '../../../core/models/quote.model';
 import { QuoteCacheService } from '../../../core/services/quote-cache-service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-card',
@@ -24,11 +25,7 @@ export class Card {
     const updated: Quote = { ...current, rating: newRating };
 
     this.quote.set(updated);
-
-    this.cache
-      .saveQuote(updated)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
+    this.updateQuote(updated);
   }
 
   clearRating() {
@@ -38,11 +35,7 @@ export class Card {
     }
 
     const updated: Quote = { ...current, rating: undefined };
-    this.quote.set(updated);
-    this.cache
-      .saveQuote(updated)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
+    this.updateQuote(updated);
   }
 
   share() {
@@ -56,10 +49,15 @@ export class Card {
     if (navigator.share) {
       navigator.share({ title: quote.author, text });
     } else {
-      window.open(
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
-        '_blank',
-      );
+      window.open(`${environment.X_API}${encodeURIComponent(text)}`, '_blank');
     }
+  }
+
+  private updateQuote(quote: Quote) {
+    this.quote.set(quote);
+    this.cache
+      .saveQuote(quote)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe();
   }
 }

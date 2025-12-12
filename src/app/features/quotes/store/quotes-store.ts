@@ -3,6 +3,7 @@ import { Observable, tap, catchError, throwError, switchMap, of } from 'rxjs';
 import { Quote } from '../../../core/models/quote.model';
 import { QuoteApiService } from '../../../core/services/quote-api-service';
 import { QuoteCacheService } from '../../../core/services/quote-cache-service';
+import { LOCAL_QUOTE } from '../../../core/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -43,13 +44,6 @@ export class QuotesStore {
     );
   }
 
-  private getLocalFallbackQuote(): Quote {
-    return {
-      text: 'Even offline, you still get wisdom. Hardcoded, but still.',
-      author: 'Local Fallback',
-    };
-  }
-
   private fallbackToCached(): Observable<Quote> {
     return this.quoteCache
       .getQuote()
@@ -57,7 +51,7 @@ export class QuotesStore {
         switchMap((cached) =>
           cached
             ? of(cached)
-            : this.quoteCache.saveQuote(this.getLocalFallbackQuote()),
+            : this.quoteCache.saveQuote(LOCAL_QUOTE),
         ),
       );
   }
