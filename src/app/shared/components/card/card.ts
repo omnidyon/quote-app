@@ -15,7 +15,7 @@ export class Card {
   private cache = inject(QuoteCacheService);
   private readonly destroyRef = inject(DestroyRef);
 
-  setRating(star: number) {
+  setRating(star: number): void {
     const current = this.quote();
     if (!current) {
       return;
@@ -28,7 +28,7 @@ export class Card {
     this.updateQuote(updated);
   }
 
-  clearRating() {
+  clearRating(): void {
     const current = this.quote();
     if (!current || current.rating == null) {
       return;
@@ -38,7 +38,7 @@ export class Card {
     this.updateQuote(updated);
   }
 
-  share() {
+  share(): void {
     const quote = this.quote();
     if (!quote) {
       return;
@@ -53,7 +53,7 @@ export class Card {
     }
   }
 
-  private updateQuote(quote: Quote) {
+  private updateQuote(quote: Quote): void {
     this.quote.set(quote);
     this.cache
       .saveQuote(quote)
