@@ -1,0 +1,140 @@
+@reference "../../../../styles.css";
+
+.quotes-wrapper {
+  @apply min-h-screen
+    flex
+    items-center
+    justify-center
+    px-4
+    py-10
+    bg-gradient-to-br
+    from-slate-100
+    via-slate-200
+    to-slate-300;
+}
+
+.quotes-surface {
+  @apply w-full
+    max-w-3xl
+    space-y-8
+    px-8
+    py-10
+    rounded-3xl
+    border
+    border-slate-200
+    bg-white/80
+    backdrop-blur-md
+    shadow-xl;
+}
+
+.quotes-header {
+  @apply flex
+    items-start
+    justify-between
+    gap-6;
+}
+
+.quotes-heading {
+  @apply text-3xl
+    font-semibold
+    tracking-tight
+    text-slate-900;
+}
+
+.quotes-subheading {
+  @apply mt-1
+    text-sm
+    text-slate-600;
+}
+
+.quotes-controls {
+  @apply flex
+    flex-col
+    items-end
+    gap-1
+    text-right;
+}
+
+.quotes-status {
+  @apply w-full
+    text-center
+    text-[0.7rem]
+    uppercase
+    tracking-wide
+    text-emerald-600;
+}
+
+.quotes-body {
+  @apply min-h-[360px]
+    flex
+    flex-col
+    justify-center;
+}
+
+.quotes-loading {
+  @apply h-[260px]
+    flex
+    items-center
+    justify-center;
+}
+
+.quotes-spinner {
+  @apply h-6
+    w-6
+    animate-spin
+    rounded-full
+    border-2
+    border-slate-400
+    border-t-transparent;
+}
+
+.quotes-error {
+  @apply rounded-xl
+    border
+    border-rose-200
+    bg-rose-50
+    px-4
+    py-3
+    text-sm
+    text-rose-700;
+}
+
+.quotes-error-title {
+  @apply font-medium;
+}
+
+.quotes-error-message {
+  @apply mt-1
+    text-rose-600/80;
+}
+
+.quotes-card-wrap {
+  @apply flex
+    justify-center;
+}
+
+.quotes-empty {
+  @apply rounded-2xl
+    border
+    border-slate-200
+    bg-white
+    px-6
+    py-8
+    text-center
+    text-sm
+    text-slate-600;
+}
+
+.quotes-empty-actions {
+  @apply mt-4
+    flex
+    items-center
+    justify-center;
+}
+
+.quotes-footer {
+  @apply mt-6
+    flex
+    items-center
+    justify-center;
+}

@@ -1,0 +1,24 @@
+@reference "../../../../styles.css";
+
+.btn {
+  @apply inline-flex
+    items-center
+    justify-center
+    px-4
+    py-2
+    rounded-lg
+    text-sm
+    font-medium
+    transition-colors
+    duration-150
+    cursor-pointer
+    disabled:cursor-not-allowed
+    disabled:opacity-40;
+}
+
+.btn-primary {
+  @apply bg-fuchsia-800
+    text-white
+    hover:bg-fuchsia-700
+    active:bg-fuchsia-900;
+}

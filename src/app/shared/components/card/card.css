@@ -1,0 +1,89 @@
+@reference "../../../../styles.css";
+
+.card {
+  @apply
+    w-full
+    max-w-xl
+    mx-auto
+    p-6
+    bg-white/90
+    backdrop-blur
+    shadow-lg
+    rounded-xl
+    border
+    border-gray-200;
+}
+
+.quote-text {
+  @apply
+    text-lg
+    leading-relaxed
+    font-medium
+    text-gray-800
+    mb-4;
+}
+
+.quote-author {
+  @apply
+    text-right
+    text-sm
+    text-gray-500
+    italic
+    mt-4
+    mb-4;
+}
+
+.rating-stars {
+  @apply
+    flex
+    gap-1;
+}
+
+.rating-star {
+  @apply
+    text-2xl
+    cursor-pointer
+    transition-colors;
+}
+
+.rating-tooltip {
+  @apply
+    pointer-events-none
+    absolute
+    left-0
+    top-full
+    mt-2
+    whitespace-nowrap
+    rounded-md
+    bg-slate-900
+    px-2
+    py-1
+    text-[0.7rem]
+    text-slate-100
+    opacity-0
+    translate-y-1
+    transition-all
+    duration-150
+    group-hover:opacity-100
+    group-hover:translate-y-0;
+}
+
+.share-button {
+  @apply
+    text-cyan-600
+    hover:text-cyan-800
+    cursor-pointer;
+}
+
+.share-content {
+  @apply
+    inline-flex
+    items-center
+    gap-2;
+}
+
+.empty-state {
+  @apply
+    text-center
+    text-gray-500;
+}

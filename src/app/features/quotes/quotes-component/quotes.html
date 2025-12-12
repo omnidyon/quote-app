@@ -1,0 +1,56 @@
+<div class="quotes-wrapper">
+  <div class="quotes-surface">
+    <header class="quotes-header">
+      <div>
+        <h1 class="quotes-heading">Random Quotes</h1>
+        <p class="quotes-subheading">
+          Multiple providers, offline fallback, ratings & sharing.
+        </p>
+      </div>
+
+      <div class="quotes-controls">
+        <app-button type="button" (click)="toggleSlideshow()">
+          {{ slideshowOn ? 'Stop slideshow' : 'Start slideshow' }}
+        </app-button>
+
+        @if (slideshowOn) {
+          <span class="quotes-status">Slideshow running</span>
+        }
+      </div>
+    </header>
+
+    <div class="quotes-body">
+      @if (loading()) {
+        <div class="quotes-loading">
+          <div class="quotes-spinner"></div>
+        </div>
+      } @else {
+        @if (error()) {
+          <div class="quotes-error">
+            <p class="quotes-error-title">Something went wrong.</p>
+            <p class="quotes-error-message">{{ error() }}</p>
+          </div>
+        }
+
+        @if (currentQuote(); as q) {
+          <div class="quotes-card-wrap">
+            <app-card [quote]="q" class="w-full max-w-xl"></app-card>
+          </div>
+        } @else {
+          <div class="quotes-empty">
+            <p>No quote loaded yet.</p>
+            <div class="quotes-empty-actions">
+              <app-button type="button" (click)="nextQuote()" [disabled]="loading()">
+                Load a quote
+              </app-button>
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="quotes-footer">
+      <app-button type="button" (click)="nextQuote()">Next quote</app-button>
+    </div>
+  </div>
+</div>
